@@ -73,13 +73,14 @@ function toggleHistory() {
 </script>
 
 <template>
-  <div class="container">
-    <el-card class="password-generator">
-      <template #header>
-        <div class="header-title">
-          <h1>随机密码生成器</h1>
-        </div>
-      </template>
+  <div class="background">
+    <div class="container">
+      <el-card class="password-generator">
+        <template #header>
+          <div class="header-title">
+            <h1>随机密码生成器</h1>
+          </div>
+        </template>
       
       <el-form :model="passwordForm" label-position="top">
         <el-form-item label="密码长度">
@@ -147,18 +148,34 @@ function toggleHistory() {
         </div>
       </div>
     </el-card>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.background {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  overflow: auto;
+}
+
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .password-generator {
-  margin-top: 30px;
+  width: 90%;
+  max-width: none;
+  margin: 20px 0;
 }
 
 .header-title {
