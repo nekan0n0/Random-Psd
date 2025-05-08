@@ -1,5 +1,6 @@
 package com.example.randompsd.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import jakarta.persistence.*;
@@ -17,6 +18,11 @@ public class PasswordHistory {
     private boolean useDigits;
     private boolean useSpecial;
     private LocalDateTime createdAt;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @JsonIgnore // 防止序列化时出现循环引用
+    private User user;
 
     @PrePersist
     public void prePersist() {
